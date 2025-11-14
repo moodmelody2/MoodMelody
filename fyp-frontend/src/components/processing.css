@@ -1,0 +1,226 @@
+.top-Description {
+  color: black;
+  font-family: Georgia, serif;
+  font-size: 18px;
+  text-align: center;
+  margin-top: 5px;
+}
+
+/* Video + keyword side by side */
+.uploads-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+}
+
+.vedio-icon {
+  width: 150px;
+  border-radius: 10px;
+}
+
+.keyword-heading {
+  background-color: #a0a09c;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-family: 'Raleway', sans-serif;
+  color: black;
+  text-align: center;
+  min-width: 220px;
+}
+
+/* Progress bar */
+.progress-bar {
+  width: 50%;
+  height: 18px;
+  background-color: white;
+  border-radius: 12px;
+  margin: 25px auto 10px;
+  border: 1px solid #555;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #444;
+  border-radius: 12px;
+  transition: width 0.5s ease;
+}
+
+/* Steps grid */
+.processing-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 70px;
+  margin: 25px auto;
+  flex-wrap: wrap;
+}
+
+/* Steps (left side) */
+.step-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Each step row */
+.step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.step-icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.step p {
+  font-size: 16px;
+  font-family: 'Raleway', sans-serif;
+  color: #000;
+  margin: 0;
+}
+
+/* Status section (right side) */
+.status-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 30px;
+  min-width: 160px; /* keeps status aligned with step labels */
+}
+
+.status-section p {
+  font-size: 16px;
+  font-family: 'Raleway', sans-serif;
+  color: #000;
+  margin: 0;
+}
+
+
+/* Cancel button */
+.cancel-btn {
+  display: block;
+  background-color: #a0a09c;
+  border-radius: 10px;
+  width: 190px;
+  border: none;
+  padding: 10px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-family: 'Raleway', sans-serif;
+  font-size: 17px;
+  margin: 30px auto 10px;
+}
+
+.cancel-btn:hover {
+  background-color: #40566d;
+}
+
+/* Navigation */
+.page-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 85%;
+  margin: 20px auto;
+}
+
+.pagination-nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+}
+
+.page-link {
+  background: transparent !important;
+  border: none;
+  cursor: pointer;
+}
+
+.previous,
+.next {
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  background-color: white;
+}
+
+.previous:hover,
+.next:hover {
+  transform: scale(1.1);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .uploads-flex {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .progress-bar {
+    width: 80%;
+  }
+
+  /* Keep steps and status side by side on smaller screens */
+  .processing-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px auto;
+    width: 90%;
+  }
+
+  .processing-steps {
+    gap: 20px;
+  }
+
+  .step p {
+    font-size: 15px;
+  }
+
+  .step-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .status-section {
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 25px;
+    text-align: left;
+    margin-left: 60px;
+  }
+
+  .status-section p {
+    font-size: 15px;
+  }
+
+  .cancel-btn {
+    width: 160px;
+    font-size: 15px;
+  }
+}
+
+
+@media (max-width: 600px) {
+.status-section {
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 35px;
+    text-align: left;
+    margin-left: 60px;
+  }
+
+}

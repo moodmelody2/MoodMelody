@@ -1,0 +1,230 @@
+.sub-Heading {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: bold;
+  font-size: 25px;
+  color: black;
+  margin-left: 55px;
+  margin-bottom: 10px;
+}
+
+.Description {
+  font-family: 'Raleway', sans-serif;
+  font-size: 20px;
+  color: black;
+  margin-bottom: 25px;
+}
+
+.video-preview{
+  margin-top: 10px;
+}
+
+.Description2 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 20px;
+  color: black;
+  margin-top: 35px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.upload-container {
+  background-color: white;
+  margin: 30px auto;
+  height: auto;
+  border-radius: 20px;
+  width: 80%;
+  padding: 30px;
+  text-align: center;
+}
+
+/* Flexbox for icon + button */
+.upload-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+/* Hide default file input */
+input[type="file"] {
+  display: none;
+}
+
+/* Custom "Choose File" button */
+.custom-file-upload {
+  background-color: #a0a09c;
+  color: white;
+  padding: 5px 25px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-family: Georgia, serif;
+  transition: 0.3s ease;
+  font-size: 17px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 90%;
+  word-break: break-word;
+}
+
+.custom-file-upload:hover {
+  background-color: #8e8e8b;
+}
+
+/* Upload icon styling */
+.upload-icon {
+  width: 70px;
+  height: 70px;
+  transition: transform 0.3s ease;
+}
+
+.upload-icon:hover {
+  transform: scale(1.1);
+}
+
+/* Upload button styling */
+.upload-btn {
+  background-color: #a0a09c;
+  border-radius: 20px;
+  width: 120px;
+  border: none;
+  padding: 5px;
+  margin-top: 15px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-family: Georgia, serif;
+  font-size: 17px;
+  height: 35px;
+}
+
+.upload-btn:hover {
+  background-color: #8e8e8b;
+}
+
+/* Supported file format box */
+#cont2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: #dadad4;
+  width: 100%;
+  max-width: 460px;
+  margin: 12px auto;
+  border-radius: 20px;
+  padding: 5px;
+}
+
+#cont2r1 {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.col-2 {
+  background-color: #40566d;
+  border-radius: 50%;
+  height: 35px;
+  width: 55px;
+  margin: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 14px;
+  margin-left: 0px;
+}
+
+.col-4 {
+  color: black;
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+/* Pagination (Previous / Next buttons) */
+.page-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 85%;
+  margin: 20px auto;
+}
+
+.pagination-nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+}
+
+.page-link {
+  background: transparent !important;
+  border: none;
+  cursor: pointer;
+}
+
+.previous,
+.next {
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  background-color: white;
+}
+
+.previous:hover,
+.next:hover {
+  transform: scale(1.1);
+}
+
+/* 🎯 RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  .sub-Heading {
+    margin-left: 0;
+    font-size: 22px;
+    text-align: center;
+  }
+
+  .upload-container {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .upload-flex {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #cont2 {
+    max-width: 300px;
+    text-align: center;
+  }
+
+  #cont2r1 {
+    gap: 6px;
+  }
+
+  .col-2 {
+    height: 32px;
+    width: 50px;
+  }
+
+  .col-4 {
+    font-size: 13px;
+  }
+
+  .page-nav {
+    width: 90%;
+  }
+
+  .previous,
+  .next {
+    width: 35px;
+    height: 35px;
+  }
+}

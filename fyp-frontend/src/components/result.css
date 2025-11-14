@@ -1,0 +1,232 @@
+/* =========================
+   MAIN STYLES
+========================= */
+#mini-cont {
+  max-width: 700px;
+  background-color: #a0a09c;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  margin-left: 25%;
+}
+
+.detections {
+  font-size: 18px;
+  font-family: 'Raleway', sans-serif;
+  color: black;
+  font-weight: 550;
+  margin-left: 10px;
+}
+
+.detected {
+  font-size: 17px;
+  font-family: 'Raleway', sans-serif;
+  margin-left: 10px;
+}
+
+#main-cont {
+  width: 100%;
+  margin: 20px;
+}
+
+#music-sug {
+  background-color: #a0a09c;
+  margin-left: 30px;
+  border-radius: 15px;
+  max-height: 300px;
+}
+
+#story {
+  background-color: #a0a09c;
+  margin-left: 30px;
+  border-radius: 15px;
+  padding: 15px;
+  margin-top: 3px;
+  min-height: 300px; /* keeps base height */
+  height: auto;      /* expands with content */
+  overflow-wrap: break-word; /* prevents text overflow */
+}
+
+
+.logo-icon {
+  margin-right: 10px;
+}
+
+.logo-icon2 {
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.music-details {
+  margin-top: 15px;
+}
+
+.music-name {
+  font-weight:bolder;
+  margin-top: 20px;
+  color: black;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-size: 22px;
+}
+
+.artist-name {
+  color: black;
+  font-size: 17px;
+  font-family: Georgia, serif;
+}
+
+.music-desc {
+  margin-top: 10px;
+  font-size: 17px;
+  font-family: Georgia, serif;
+  color:black;
+}
+
+.story-details {
+  margin-top: 15px;
+}
+
+.detected-objects {
+  font-weight: bold;
+  color:black;
+  font-family: Georgia, serif;
+}
+
+.object-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 10px 10px 15px 20px;
+}
+
+.object-badge {
+  background-color: #c7c5c5;
+  border-radius: 20px;
+  color:black;
+  padding: 5px 12px;
+  font-size: 14px;
+}
+
+.story-text {
+  text-align: justify;
+  font-size: 15px;
+  color: #333;
+  line-height: 1.5;
+}
+/* Action buttons container */
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 25px;
+}
+
+/* Re-generate Story Button */
+.regen-btn,
+.tryanother-btn {
+  background-color: #a0a09c;
+  border-radius: 10px;
+  width: 200px;
+  border: none;
+  padding: 10px 0;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-family: 'Raleway', sans-serif;
+  font-size: 17px;
+}
+
+.regen-btn:hover,
+.tryanother-btn:hover {
+  background-color: #40566d;
+}
+
+
+/* =========================
+   TABLET SCREENS (≤1024px)
+========================= */
+@media (max-width: 1024px) {
+  #mini-cont {
+    max-width: 90%;
+    margin-left: 5%;
+    margin-bottom: 20px;
+  }
+
+  #main-cont {
+    width: 100%;
+    margin: 10px;
+  }
+
+  #music-sug,
+  #story {
+    margin-left: 25px;
+    max-height: 280px;
+  }
+
+  .detections {
+    font-size: 17px;
+    font-weight: 550;
+    margin-left: 5px;
+  }
+
+  .detected {
+    font-size: 16px;
+    margin-left: 5px;
+  }
+  #story {
+  background-color: #a0a09c;
+  margin-left: 30px;
+  border-radius: 15px;
+  padding: 15px;
+  margin-top: 3px;
+  min-height: 500px; /* keeps base height */
+  height: auto;      /* expands with content */
+  overflow-wrap: break-word; /* prevents text overflow */
+}
+  
+  
+}
+
+/* =========================
+   MOBILE SCREENS (≤600px)
+========================= */
+@media (max-width: 600px) {
+  #mini-cont {
+    max-width: 95%;
+    margin-left: 2%;
+    margin-bottom: 20px;
+  }
+
+  #main-cont {
+    width: 96%;
+    margin: 0;
+  }
+
+  #music-sug,
+  #story {
+    margin-left: 10px;
+  }
+
+  .detections {
+    font-size: 15px;
+    font-weight: 550;
+    margin-left: 0;
+  }
+
+  .detected {
+    font-size: 15px;
+    margin-left: 0;
+  }
+
+  .col-sm-6 {
+    width: 93%;
+  }
+  #story {
+  background-color: #a0a09c;
+  border-radius: 15px;
+  padding: 15px;
+  margin-top: 3px;
+  min-height: 600px; /* keeps base height */
+  height: auto;      /* expands with content */
+  overflow-wrap: break-word; /* prevents text overflow */
+}
+}

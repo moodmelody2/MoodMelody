@@ -1,0 +1,26 @@
+.top-heading{
+font-family: 'Lobster', cursive;
+font-size: 3.3rem; 
+font-weight: 700;               /* Big size */
+color: #000000;                         /* Deep brownish tone */
+letter-spacing: 2px;
+text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+margin-top: 30px;
+}
+
+
+@media (max-width: 991px) {
+
+.top-heading{
+font-family: 'Lobster', cursive;
+font-size: 2.5rem; 
+font-weight: 500;               /* Big size */
+color: #000000;                         /* Deep brownish tone */
+letter-spacing: 1.7px;
+text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+margin-top: 20px;
+margin-left: -20px;
+}
+
+
+}

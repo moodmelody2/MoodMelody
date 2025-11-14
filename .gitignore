@@ -1,0 +1,17 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Models / large files
+backend/models/
+backend/uploads/
+
+# Node/React
+frontend/node_modules/
+frontend/build/
+
+# OS files
+.DS_Store

@@ -1,0 +1,241 @@
+/* Stylish Blockquote */
+.styled-quote {
+  display: flex;   /* Arrange icon + text horizontally */
+  align-items: center; 
+  border-left: 5px solid #40566d; /* vertical line */
+  margin: 13px auto;
+  padding: 8px 20px 3px 10px;
+  font-weight: 500;
+  width: 40%;
+ font-family: Georgia, serif;
+  font-size: 20px;
+  font-style: italic;
+  color: #333;
+  line-height: 1; 
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Add fancy opening and closing quotes */
+.styled-quote p::before,
+.styled-quote p::after {
+  color: #40566d;
+  font-size: 40px;
+  font-family: Georgia, serif;
+  vertical-align: middle;
+}
+
+.styled-quote p::before {
+  content: "“";
+  margin-right: 5px;
+}
+
+.styled-quote p::after {
+  content: "”";
+  margin-left: 5px;
+}
+.movie{
+    background: transparent !important;
+     margin-right: 10px;                /* spacing between icon & text */
+     flex-shrink: 0; 
+}
+
+.main-heading{
+    color:black;
+    text-align: left;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    margin-left:50px;
+    font-size: 26px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+}
+
+.keyword {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 24px;
+  color: black;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.keyword-form {
+  display: flex;
+  flex-direction: column;   /* Stack input, suggestions, and button vertically */
+  justify-content: center;
+  align-items: center;
+  gap: 20px;                /* space between input and next section */
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* Input box centered */
+.keyword-input {
+  width: 55%;
+  padding: 12px 15px;
+  border-radius: 25px;
+  background-color: #b7b7b0;
+  border: 0;
+  font-size: 18px;
+  font-family: 'Raleway', sans-serif;
+  outline: none;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.keyword-input:focus {
+  border-color: #40566d;
+  box-shadow: 0px 0px 5px #40566d;
+}
+
+/* Suggestions box */
+.keyword-suggestions {
+  width: 55%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  display: block;
+  flex-direction: column;
+  align-items: center;
+}
+
+.row-2{
+   display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 10px 0;
+  width: 75%;  
+  margin-left: 85px;
+}
+
+
+.keyword-suggestions .row {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.keyword-suggestions .col {
+  background-color: #a0a09c;
+  color: black;
+  border-radius: 25px;
+  padding: 8px 18px;
+  text-align: center;
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin: 5px;
+}
+
+.keyword-suggestions .col:hover {
+  background-color: #b8b8b6;
+  transform: scale(1.05);
+}
+
+/* Submit button */
+.keyword-btn {
+  background-color: #a0a09c;
+  border-radius: 25px;
+  width: 120px;
+  border: none;
+  padding: 8px 0;
+  color: white;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-family: Georgia, serif;
+  font-size: 17px;
+  height: 38px;
+}
+
+.keyword-btn:hover {
+  background-color: #40566d;
+}
+
+.icon{
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-top: 0px;
+}
+
+.page-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 85%;
+  margin: 20px auto;
+}
+
+.pagination-nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+}
+
+.page-link {
+  background: transparent !important;
+  border: none;
+  cursor: pointer;
+}
+
+.previous,
+.next {
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  background-color: white;
+}
+
+.previous:hover,
+.next:hover {
+  transform: scale(1.1);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .styled-quote {
+    width: 95%;
+    padding: 15px 20px 15px 30px;
+  }
+
+  .styled-quote p {
+    font-size: 16px;
+  }
+
+  .main-heading{
+    margin-left: 20px;
+  }
+  .keyword-input {
+    width:65%;
+    font-size: 13px;
+  }
+
+  .keyword-btn {
+    padding: 8px 18px;
+    font-size: 14px;
+  }
+
+  .page-nav {
+    width: 90%;
+  }
+
+  .previous,
+  .next {
+    width: 35px;
+    height: 35px;
+  }
+
+  .row-2{
+  margin: 10px 0;
+  width: 100%;  
+}
+
+.keyword-suggestions {
+  width: 55%;
+}
+}
