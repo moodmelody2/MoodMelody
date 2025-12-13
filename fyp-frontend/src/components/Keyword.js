@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./main.css";
 import "./keywords.css";
+import Swal from "sweetalert2";
 import { Link, useNavigate } from "react-router-dom";
 
 function Keyword() {
@@ -13,17 +14,40 @@ function Keyword() {
   // Handle keyword submission
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (!keyword.trim()) {
-      alert("Please enter a keyword");
-      return;
+      return Swal.fire({
+        toast: true,
+        position: 'top',
+        icon: 'warning',
+        title: 'No Keyword',
+        text: 'Please enter a keyword!',
+        showConfirmButton: true,
+        confirmButtonColor: '#3b8e75ff',
+        width: '300px',
+        padding: '0.8rem',
+        background: '#ffffffff'
+      });
     }
 
-    // Save keyword to localStorage
     localStorage.setItem("selectedKeyword", keyword);
 
-    // Navigate to processing or next page
-    navigate("/processing");
+    Swal.fire({
+      toast: true,
+      position: 'top',
+      icon: 'success',
+      title: 'Keyword Saved!',
+      text: 'Your inspiration keyword is saved 🎵',
+      showConfirmButton: true,
+      confirmButtonColor: '#3b8e75ff',
+      width: '300px',
+      padding: '0.8rem',
+      background: '#ffffffff'
+    }).then(() => {
+      navigate("/processing");
+    });
   };
+
 
   // Handle suggested keyword selection
   const handleSelect = (value) => setKeyword(value);
