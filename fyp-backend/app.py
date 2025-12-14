@@ -20,7 +20,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = Flask(__name__, static_folder=".")
-CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
+# CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
+CORS(app, resources={r"/*": {"origins": "https://moodmelody-gz7c7tkgg-moodmelody2s-projects.vercel.app/"}})
+
 
 # Initialize OpenAI client
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
@@ -219,7 +221,8 @@ def handle_video():
     file = request.files["video"]
     filename = "uploaded.mp4"
     file.save(filename)
-    video_url = f"http://127.0.0.1:5000/uploads/{filename}"
+    video_url = f"/uploads/{filename}"
+    # video_url = f"http://127.0.0.1:5000/uploads/{filename}"
 
     for k in processing_status:
         processing_status[k] = "pending"
@@ -269,5 +272,6 @@ def handle_video():
 # MAIN
 # ==========================================
 if __name__ == "__main__":
-    print("🚀 Flask backend running on http://127.0.0.1:5000")
-    app.run(host="127.0.0.1", port=5000, debug=False)
+    port = int(os.environ.get("PORT", 5000))
+    print(f"🚀 Flask backend running on port {port}")
+    app.run(host="0.0.0.0", port=port, debug=False)
