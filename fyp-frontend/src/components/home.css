@@ -25,17 +25,16 @@
     background-color: white;
     border-radius: 50%;
     height: 170px;
-    margin-left: 150px;
+    margin-left: 170px;
     width: 200px;
 }
 
 .icons {
     margin-top: 20px;
+     border-radius: 50%;
 }
 
-#music-icon {
-    border-radius: 50%;
-}
+
 
 h3 {
     color: black;
@@ -85,7 +84,43 @@ h3 {
 .btn-link:hover {
     color: rgb(152, 149, 149);
 }
+@media (max-width: 1260px) and (min-width: 1024px) {
+ #col1 {
+        width: 50%;
+        height: 300px;
+    }
 
+    #main-col {
+        margin-top: 30px;
+        text-align: center;
+        margin-left: 10%;
+        width:350px;
+    }
+
+    #main-col .col-5 {
+        flex: 0 0 50%;
+        max-width: 55%;
+        margin: 0px;
+        height: 150px;
+    }
+
+    .col-5 {
+        background-color: white;
+        border-radius: 50%;
+        height: 150px;
+        width: 300px;
+    }
+
+    .col-6 {
+        background-color: white;
+        border-radius: 50%;
+        height: 150px;
+        margin-top: -15px;
+        width: 160px;
+        margin-left: 85px;
+    }
+
+}
 
 @media (max-width: 991px) and (min-width: 768px) {
     #col1 {

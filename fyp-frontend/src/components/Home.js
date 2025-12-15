@@ -15,7 +15,7 @@ function Home() {
 
       <div class="container" id="cont1">
         <div class="row">
-          <div class="col-8 col-md-8 col-sm-12"  id="col1">
+          <div class="col-10 col-md-10 col-sm-12"  id="col1">
             <div>
               <h1 style={{ marginTop: "40px" }}>Interactive Gallery</h1>
               <Gallery />
@@ -25,7 +25,7 @@ function Home() {
             <div class="row justify-content-center text-center">
               <div class="col-5 col-md-5 col-sm-6 mb-1" >
                <img
-        src={`${process.env.PUBLIC_URL}/fyp-images/Video-512.webp`}
+        src={`${process.env.PUBLIC_URL}/fyp-images/upload.jpg`}
         width="75"
         height="80"
         alt="Upload Video" 
@@ -34,7 +34,7 @@ function Home() {
               </div>
               <div class="col-5 col-md-5 col-sm-6 mb-1" >
                 <img
-        src={`${process.env.PUBLIC_URL}/fyp-images/addkeyword.jpg`}
+        src={`${process.env.PUBLIC_URL}/fyp-images/keyword.png`}
         width="65"
         height="70"
         alt="Add Keyword"
@@ -45,7 +45,7 @@ function Home() {
             <div class="row">
               <div class="col-6 col-md-6" id="last-col" >
                 <img
-        src={`${process.env.PUBLIC_URL}/fyp-images/Music_Note-512.webp`}
+        src={`${process.env.PUBLIC_URL}/fyp-images/result.png`}
         width="70"
         height="75"
         alt="MoodMelody Logo"
