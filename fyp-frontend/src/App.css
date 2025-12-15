@@ -3,6 +3,17 @@
 
 }
 
+.logo{
+  margin-left: -35px;
+  color: #413b5b;
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: 600;
+}
+h7{
+  margin-left: 5px;
+}
+
 .navbackground {
   background-color: #a0a09c;
   border-radius: 25px;
@@ -29,7 +40,7 @@
 
 .nav-links .nav-link {
   position: relative;
-  color: white;
+  color: #413b5b;
   text-decoration: none;
   font-weight: 500;
   margin: 0 15px;

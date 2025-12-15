@@ -20,13 +20,13 @@ function App() {
         <header>
           <Navbar expand="lg" className="navbackground">
             <Container>
-              <Navbar.Brand as={Link} to="/">
+              <Navbar.Brand as={Link} to="/" class="logo">
                 <img
-                  src={`${process.env.PUBLIC_URL}/fyp-images/logo.png`}
-                  width="120"
+                  src={`${process.env.PUBLIC_URL}/fyp-images/moodmelodyicon.png`}
+                  width="60"
                   height="50"
                   alt="MoodMelody Logo"
-                />
+                /><h7>MoodMelody</h7>
               </Navbar.Brand>
 
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
