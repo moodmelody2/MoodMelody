@@ -21,7 +21,7 @@ load_dotenv()  # For OPENAI_API_KEY, Spotify credentials
 # 🟢 Flask App Setup
 # ------------------------------------------
 app = Flask(__name__, static_folder=".")
-CORS(app, resources={r"/*": {"origins": "https://moodmelody2.github.io/MoodMelody/#/"}})
+CORS(app, resources={r"/*": {"origins": "https://moodmelody2.github.io"}})
 
 # ------------------------------------------
 # 🟢 OpenAI Client
