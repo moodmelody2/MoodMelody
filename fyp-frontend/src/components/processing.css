@@ -68,20 +68,20 @@
 }
 
 /* Each step row */
-.step {
+.processing-step {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.step-icon {
+.processing-step-icon{
   width: 32px;
   height: 32px;
   object-fit: contain;
   border-radius: 50%;
 }
 
-.step p {
+.processing-step p {
   font-size: 16px;
   font-family: 'Raleway', sans-serif;
   color: #000;
@@ -178,21 +178,22 @@
     align-items: start;
     justify-content: center;
     gap: 15px;
-    margin: 20px auto;
+    margin: 17px auto;
     width: 90%;
   }
 
-  .processing-steps {
+  .processing-step {
     gap: 20px;
   }
 
-  .step p {
+  .processing-step p {
     font-size: 15px;
   }
 
-  .step-icon {
+  .processing-step-icon {
     width: 28px;
     height: 28px;
+    margin-left: 10px;
   }
 
   .status-section {
