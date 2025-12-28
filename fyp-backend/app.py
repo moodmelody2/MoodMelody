@@ -21,7 +21,7 @@ load_dotenv()  # For OPENAI_API_KEY, Spotify credentials
 # 🟢 Flask App Setup
 # ------------------------------------------
 app = Flask(__name__, static_folder=".")
-CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
+CORS(app, resources={r"/*": {"origins": "https://moodmelody2.github.io/MoodMelody/#/"}})
 
 # ------------------------------------------
 # 🟢 OpenAI Client
@@ -283,6 +283,7 @@ def handle_video():
 # MAIN
 # ==========================================
 if __name__ == "__main__":
-    print("🚀 Flask backend running on http://127.0.0.1:5000")
-    app.run(host="127.0.0.1", port=5000, debug=False)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
+
 
