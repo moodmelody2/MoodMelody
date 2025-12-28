@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/MoodMelody/static/css/main.4619f8a0.css",
-    "main.js": "/MoodMelody/static/js/main.949b0f03.js",
+    "main.css": "/MoodMelody/static/css/main.f08e5cec.css",
+    "main.js": "/MoodMelody/static/js/main.a2ea186d.js",
     "static/js/453.fcbe27fc.chunk.js": "/MoodMelody/static/js/453.fcbe27fc.chunk.js",
     "index.html": "/MoodMelody/index.html",
-    "main.4619f8a0.css.map": "/MoodMelody/static/css/main.4619f8a0.css.map",
-    "main.949b0f03.js.map": "/MoodMelody/static/js/main.949b0f03.js.map",
+    "main.f08e5cec.css.map": "/MoodMelody/static/css/main.f08e5cec.css.map",
+    "main.a2ea186d.js.map": "/MoodMelody/static/js/main.a2ea186d.js.map",
     "453.fcbe27fc.chunk.js.map": "/MoodMelody/static/js/453.fcbe27fc.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4619f8a0.css",
-    "static/js/main.949b0f03.js"
+    "static/css/main.f08e5cec.css",
+    "static/js/main.a2ea186d.js"
   ]
 }
