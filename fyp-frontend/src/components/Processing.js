@@ -108,11 +108,11 @@ export default function Processing() {
       <div className="processing-content">
   <div className="step-list">
     {Object.keys(stepNames).map((step) => (
-      <div className="step" key={step}>
+      <div className="processing-step" key={step}>
         <img
           src={statusIcons[status[step] || "pending"]}
           alt={status[step] || "pending"}
-          className="step-icon"
+          className="processing-step-icon"
         />
         <p>{stepNames[step]}</p>
       </div>
