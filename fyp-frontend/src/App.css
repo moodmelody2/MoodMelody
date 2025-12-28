@@ -10,8 +10,9 @@
   font-size: 25px;
   font-weight: 600;
 }
-h7{
+.brand-text{
   margin-left: 5px;
+  color: black;
 }
 
 .navbackground {
@@ -85,6 +86,11 @@ h7{
   width: 100%;
 }
 
+@media (max-width: 768px) {
+    .nav-links {
+        display: flex;
+    }
+}
 
 
 @media (max-width: 991px) {
@@ -98,6 +104,14 @@ h7{
     /* little space from left edge */
   }
 
+  .logo{
+  margin-left: -15px;
+  color: #413b5b;
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: 600;
+}
+
   .nav-links .nav-link {
     margin: 2px 0;
     text-align: left;
@@ -108,8 +122,14 @@ h7{
 
   .navbackground {
     max-height: fit-content;
-    margin: 20px;
-    width: 99%;
-    margin-left: 5px;
+    margin: 2px;
+    width: 100%;
+    margin-left: 2px;
   }
 }
+
+
+
+
+
+
