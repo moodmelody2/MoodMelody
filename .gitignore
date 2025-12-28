@@ -1,0 +1,23 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Backend
+fyp-backend/.cache
+fyp-backend/uploaded.mp4
+fyp-backend/.env
+backend/models/
+backend/uploads/
+
+# Node / React
+fyp-frontend/node_modules/
+fyp-frontend/build/
+*.mp4
+.eslintcache
+
+# OS / IDE files
+.DS_Store
+.env
