@@ -227,7 +227,9 @@ def handle_video():
     file = request.files["video"]
     filename = "uploaded.mp4"
     file.save(filename)
-    video_url = f"http://127.0.0.1:5000/uploads/{filename}"
+    backend_url = os.environ.get("BACKEND_URL", "http://localhost:5000")
+    video_url = f"{backend_url}/uploads/{filename}"
+
 
     # Reset statuses
     for k in processing_status:
