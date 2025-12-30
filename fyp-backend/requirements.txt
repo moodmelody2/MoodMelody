@@ -22,12 +22,13 @@ gunicorn==21.2.0
 # Use ultralytics with minimal dependencies
 ultralytics==8.0.196
 
-# For FER (face emotion recognition) - lighter alternative
-fer==22.5.0
-
 # Runtime dependencies
 scipy==1.11.4
 pandas==2.2.0
 matplotlib==3.7.5
+# For FER (face emotion recognition) - lighter alternative
+fer==22.5.0
 
-moviepy==2.0.0.post7
+# MoviePy dependency required by FER
+moviepy>=2.0.0
+
