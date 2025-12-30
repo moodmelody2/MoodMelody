@@ -29,3 +29,5 @@ fer==22.5.0
 scipy==1.11.4
 pandas==2.2.0
 matplotlib==3.7.5
+
+moviepy==2.0.0.post7
