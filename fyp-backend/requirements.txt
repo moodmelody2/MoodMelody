@@ -1,34 +1,17 @@
-# Core Flask
-Flask==2.3.3
-Flask-CORS==4.0.0
-Werkzeug==2.3.7
-
-# Lightweight dependencies
-numpy==1.24.4
-opencv-python-headless==4.9.0.80
-Pillow==10.3.0
-requests==2.31.0
-python-dotenv==1.0.1
-
-# OpenAI
-openai==1.12.0
-
-# Spotify
-spotipy==2.24.0
-
-# Server
-gunicorn==21.2.0
-
-# Use ultralytics with minimal dependencies
-ultralytics==8.0.196
-
-# Runtime dependencies
-scipy==1.11.4
-pandas==2.2.0
-matplotlib==3.7.5
-# For FER (face emotion recognition) - lighter alternative
-fer==22.5.0
-
-# MoviePy dependency required by FER
-moviepy>=2.0.0
-
+Flask>=2.3.3
+Flask-CORS>=4.0.0
+Werkzeug>=2.3.7
+numpy>=1.25.0
+opencv-python-headless>=4.9.0
+Pillow>=10.3.0
+requests>=2.31.0
+python-dotenv>=1.0.1
+openai>=1.12.0
+spotipy>=2.24.0
+gunicorn>=21.2.0
+ultralytics>=8.0.196
+fer>=22.5.0
+scipy>=1.11.4
+pandas>=2.2.0
+matplotlib>=3.7.5
+moviepy>=2.2.0
