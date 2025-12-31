@@ -234,10 +234,12 @@ def upload_video():
 
         video_url = request.host_url.rstrip("/") + f"/uploads/{filename}"
 
+        # Reset statuses
         for k in processing_status:
             processing_status[k] = "pending"
         final_result.clear()
 
+        # Background processing
         def process_video():
             try:
                 processing_status["objectDetection"] = "processing"
@@ -285,6 +287,7 @@ def upload_video():
     except Exception as e:
         print("🔥 Upload route error:", e)
         return jsonify({"error": str(e)}), 500
+
 
 # ======================================================
 # Run App
