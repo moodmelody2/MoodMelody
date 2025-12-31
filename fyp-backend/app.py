@@ -20,7 +20,6 @@ load_dotenv()
 # Flask App Setup
 # ------------------------------------------
 app = Flask(__name__, static_folder=".")
-UPLOAD_FOLDER = "uploads"
 app.config['MAX_CONTENT_LENGTH'] = 150 * 1024 * 1024  # 150MB max
 CORS(app, resources={r"/*": {"origins": "*"}})  # You can restrict to your frontend URL
 
@@ -204,12 +203,20 @@ def get_status():
 @app.route("/upload", methods=["POST"])
 def handle_video():
     global processing_status, final_result
+
+    # Check file
     file = request.files.get("video")
     if not file:
         return jsonify({"error": "No video uploaded"}), 400
 
-    filename = f"uploaded_{int(time.time())}.mp4"
-    file.save(filename)
+    # Save file to uploads folder
+    if not os.path.exists(UPLOAD_FOLDER):
+        os.makedirs(UPLOAD_FOLDER)
+    filename = "uploaded.mp4"  # same as old working code
+    filepath = os.path.join(UPLOAD_FOLDER, filename)
+    file.save(filepath)
+
+    # Always return this URL
     video_url = f"/uploads/{filename}"
 
     # Reset statuses
@@ -219,23 +226,28 @@ def handle_video():
 
     def process_video():
         try:
+            # Object detection
             processing_status["objectDetection"] = "processing"
-            objs = detect_objects(filename)
+            objs = detect_objects(filepath)
             labels = [o["label"] for o in objs]
             processing_status["objectDetection"] = "completed"
 
+            # Emotion analysis
             processing_status["emotionAnalysis"] = "processing"
-            emotion = detect_emotion(filename)
+            emotion = detect_emotion(filepath)
             processing_status["emotionAnalysis"] = "completed"
 
+            # Music recommendation
             processing_status["musicRecommendation"] = "processing"
             song = get_spotify_track_for_genre(emotion_to_genre.get(emotion, "pop"))
             processing_status["musicRecommendation"] = "completed"
 
+            # Story generation
             processing_status["storyGeneration"] = "processing"
             story = generate_long_story(labels, emotion)
             processing_status["storyGeneration"] = "completed"
 
+            # Save final result
             final_result.update({
                 "detected_objects": labels,
                 "dominant_emotion": emotion,
@@ -252,7 +264,13 @@ def handle_video():
             final_result.update({"error": str(e)})
 
     threading.Thread(target=process_video, daemon=True).start()
-    return jsonify({"message": "Video accepted", "video_url": video_url})
+
+    # Return exactly like old code
+    return jsonify({
+        "message": "Video upload accepted",
+        "video_url": video_url
+    })
+
 
 # ==========================================
 # Main
