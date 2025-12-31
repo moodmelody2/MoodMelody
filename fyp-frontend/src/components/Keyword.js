@@ -107,7 +107,7 @@ function Keyword() {
       <nav aria-label="Page navigation" className="page-nav">
         <ul className="pagination-nav">
           <li className="page-item">
-            <Link to="/keyword" className="page-link">
+            <Link to="/upload" className="page-link">
               <img
                 src={`${process.env.PUBLIC_URL}/fyp-images/previous.png`}
                 width="40"
@@ -118,7 +118,7 @@ function Keyword() {
             </Link>
           </li>
           <li className="page-item next-link">
-            <Link to="/result" className="page-link">
+            <Link to="/processing" className="page-link">
               <img
                 src={`${process.env.PUBLIC_URL}/fyp-images/next.png`}
                 width="40"

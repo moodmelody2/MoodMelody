@@ -10,14 +10,14 @@ function Home() {
     const particleCount = 50; // number of particles
 
     for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        particle.style.top = `${Math.random() * 100}vh`;
-        particle.style.left = `${Math.random() * 100}vw`;
-        particle.style.width = `${2 + Math.random() * 3}px`;
-        particle.style.height = particle.style.width;
-        particle.style.background = `rgba(124, 92, 255, ${0.2 + Math.random() * 0.5})`;
-        particlesContainer.appendChild(particle);
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.top = `${Math.random() * 100}vh`;
+      particle.style.left = `${Math.random() * 100}vw`;
+      particle.style.width = `${2 + Math.random() * 3}px`;
+      particle.style.height = particle.style.width;
+      particle.style.background = `rgba(124, 92, 255, ${0.2 + Math.random() * 0.5})`;
+      particlesContainer.appendChild(particle);
     }
   }, []);
 
@@ -36,8 +36,8 @@ function Home() {
               analyze facial expressions and recommend the perfect soundtrack.
             </p>
             <div className="cta-buttons">
-              <a href="/upload" className="btn btn-primary">🎬 Upload Video</a>
-              <a href="/keyword" className="btn btn-secondary">🔤 Add Keywords</a>
+              <Link to="/upload" className="btn btn-primary">🎬 Upload Video</Link>
+              <Link to="/keyword" className="btn btn-secondary">🔤 Add Keywords</Link>
             </div>
           </div>
 

@@ -183,7 +183,7 @@
   }
 
   .processing-step {
-    gap: 20px;
+    gap: 10px;
   }
 
   .processing-step p {
@@ -193,7 +193,7 @@
   .processing-step-icon {
     width: 28px;
     height: 28px;
-    margin-left: 10px;
+    margin-left: 30px;
   }
 
   .status-section {

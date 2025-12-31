@@ -22,7 +22,8 @@ function Result() {
 useEffect(() => {
   const fetchResult = async () => {
     try {
-      const response = await fetch("http://127.0.0.1:5000/status");
+      const response = await fetch("https://moodmelody2-backend.onrender.com/status");
+
       const data = await response.json();
       console.log("✅ Received data from backend:", data);
 
@@ -62,7 +63,7 @@ useEffect(() => {
   // 🔁 Re-generate story handler
 const handleRegenerateStory = async () => {
   try {
-    const res = await fetch("http://127.0.0.1:5000/generate_story", {
+    const res = await fetch("https://moodmelody2-backend.onrender.com/generate_story", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

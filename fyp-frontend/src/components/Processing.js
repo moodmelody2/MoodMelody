@@ -27,7 +27,7 @@ export default function Processing() {
 
     const interval = setInterval(async () => {
       try {
-        const res = await fetch("http://127.0.0.1:5000/status");
+        const res = await fetch("https://moodmelody2-backend.onrender.com/status");
         const data = await res.json();
 
         // Flask may return {objectDetection:..., emotionAnalysis:...} OR {status:{...}, result:{...}}

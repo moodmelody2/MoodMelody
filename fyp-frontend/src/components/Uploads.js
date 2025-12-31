@@ -130,7 +130,7 @@ function Upload() {
       <nav aria-label="Page navigation" className="page-nav">
         <ul className="pagination-nav">
           <li className="page-item">
-            <Link to="/keyword" className="page-link">
+            <Link to="/" className="page-link">
               <img
                 src={`${process.env.PUBLIC_URL}/fyp-images/previous.png`}
                 width="40"
@@ -141,16 +141,18 @@ function Upload() {
             </Link>
           </li>
           <li className="page-item next-link">
-            <Link to="/processing" className="page-link">
-              <img
-                src={`${process.env.PUBLIC_URL}/fyp-images/next.png`}
-                width="40"
-                height="45"
-                alt="Next"
-                className="next"
-              />
-            </Link>
-          </li>
+  <Link to="/keyword" className="page-link">
+    <img
+      src={`${process.env.PUBLIC_URL}/fyp-images/next.png`}
+      width="40"
+      height="45"
+      alt="Next"
+      className="next"
+    />
+  </Link>
+</li>
+
+
         </ul>
       </nav>
     </div>
