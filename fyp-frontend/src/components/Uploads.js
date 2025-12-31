@@ -34,7 +34,7 @@ function Upload() {
     formData.append("video", selectedFile);
 
     try {
-      const res = await fetch("http://127.0.0.1:5000/upload", {
+      const res = await fetch("https://moodmelody2-backend.onrender.com/upload", {
         method: "POST",
         body: formData,
       });
