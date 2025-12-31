@@ -20,13 +20,13 @@ function Footer() {
           Feel the rhythm of your mood. AI-powered music that matches your emotions.
         </p>
 
-        <div className="footer-links">
-          <a href="/" className="footer-link">Home</a>
-          <a href="/upload" className="footer-link">Upload</a>
-          <a href="/keyword" className="footer-link">Keyword</a>
-          <a href="/processing" className="footer-link">Processing</a>
-          <a href="/result" className="footer-link">Result</a>
-        </div>
+      <div className="footer-links">
+  <Link to="/" className="footer-link">Home</Link>
+  <Link to="/upload" className="footer-link">Upload</Link>
+  <Link to="/keyword" className="footer-link">Keyword</Link>
+  <Link to="/processing" className="footer-link">Processing</Link>
+  <Link to="/result" className="footer-link">Result</Link>
+</div>
 
         <div className="footer-bottom">
           <p>© {new Date().getFullYear()} <strong>MoodMelody</strong> | All Rights Reserved</p>
