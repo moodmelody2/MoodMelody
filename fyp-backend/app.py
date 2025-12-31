@@ -7,27 +7,29 @@ import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 import threading
 import os
+import time
 from openai import OpenAI
 from dotenv import load_dotenv
 
 # ------------------------------------------
-# 🟢 Load environment variables
+# Load environment variables
 # ------------------------------------------
 load_dotenv()
 
 # ------------------------------------------
-# 🟢 Flask App Setup
+# Flask App Setup
 # ------------------------------------------
 app = Flask(__name__, static_folder=".")
-CORS(app, resources={r"/*": {"origins": "https://moodmelody2.github.io"}})
+app.config['MAX_CONTENT_LENGTH'] = 150 * 1024 * 1024  # 150MB max
+CORS(app, resources={r"/*": {"origins": "*"}})  # You can restrict to your frontend URL
 
 # ------------------------------------------
-# 🟢 OpenAI Client
+# OpenAI Client
 # ------------------------------------------
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # ------------------------------------------
-# 🟢 Lazy-loaded Models (IMPORTANT)
+# Lazy-loaded Models
 # ------------------------------------------
 yolo_model = None
 emotion_detector = None
@@ -47,7 +49,7 @@ def get_emotion_detector():
     return emotion_detector
 
 # ------------------------------------------
-# 🟢 Spotify Setup (NO hardcoded secrets)
+# Spotify Setup
 # ------------------------------------------
 SPOTIFY_CLIENT_ID = os.getenv("SPOTIFY_CLIENT_ID")
 SPOTIFY_CLIENT_SECRET = os.getenv("SPOTIFY_CLIENT_SECRET")
@@ -65,7 +67,7 @@ if SPOTIFY_CLIENT_ID and SPOTIFY_CLIENT_SECRET:
         print("Spotipy init warning:", e)
 
 # ------------------------------------------
-# 🟢 Mappings & Status
+# Mappings & Status
 # ------------------------------------------
 emotion_to_genre = {
     "happy": "pop",
@@ -87,13 +89,12 @@ processing_status = {
 final_result = {}
 
 # ==========================================
-# 🧠 HELPER FUNCTIONS
+# Helper Functions
 # ==========================================
 def sample_frames(video_path, target_fps=1, max_frames=60):
     cap = cv2.VideoCapture(video_path)
     src_fps = cap.get(cv2.CAP_PROP_FPS) or 30.0
     step = max(1, int(round(src_fps / float(target_fps))))
-
     idx = collected = 0
     while cap.isOpened():
         ret, frame = cap.read()
@@ -110,7 +111,6 @@ def sample_frames(video_path, target_fps=1, max_frames=60):
 def detect_objects(video_path):
     model = get_yolo()
     counts, confs = Counter(), defaultdict(list)
-
     for frame in sample_frames(video_path):
         try:
             res = model(frame, verbose=False)[0]
@@ -122,16 +122,11 @@ def detect_objects(video_path):
                 confs[label].append(float(b.conf))
         except Exception as e:
             print("YOLO frame error:", e)
-
-    return [
-        {"label": l, "count": c, "avg_conf": float(round(np.mean(confs[l]), 3))}
-        for l, c in counts.items()
-    ]
+    return [{"label": l, "count": c, "avg_conf": float(round(np.mean(confs[l]),3))} for l,c in counts.items()]
 
 def detect_emotion(video_path):
     detector = get_emotion_detector()
     counts = Counter()
-
     for frame in sample_frames(video_path):
         try:
             faces = detector.detect_emotions(frame)
@@ -141,13 +136,11 @@ def detect_emotion(video_path):
                     counts[label] += 1
         except Exception as e:
             print("Emotion frame error:", e)
-
     return max(counts, key=counts.get) if counts else "neutral"
 
 def get_spotify_track_for_genre(genre):
     if not sp:
         return {"track_name": "Unknown", "artist": "Unknown", "url": "#"}
-
     try:
         result = sp.search(q=f"genre:{genre} track", type="track", limit=1)
         items = result.get("tracks", {}).get("items", [])
@@ -160,12 +153,8 @@ def get_spotify_track_for_genre(genre):
             }
     except Exception as e:
         print("Spotify error:", e)
-
     return {"track_name": "Unknown", "artist": "Unknown", "url": "#"}
 
-# ------------------------------------------
-# 🆕 Story Generation
-# ------------------------------------------
 def generate_long_story(objects, emotion, keyword=None, max_words=130):
     try:
         prompt = (
@@ -175,7 +164,6 @@ def generate_long_story(objects, emotion, keyword=None, max_words=130):
             f"Theme: {keyword or 'everyday life'}\n\n"
             "Make it descriptive and reflective."
         )
-
         completion = client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
@@ -185,29 +173,45 @@ def generate_long_story(objects, emotion, keyword=None, max_words=130):
             max_tokens=600,
             temperature=0.8
         )
-
         return completion.choices[0].message.content.strip()
     except Exception as e:
         return f"(Story generation failed: {e})"
 
 # ==========================================
-# ROUTES
+# Routes
 # ==========================================
 @app.route("/")
 def index():
     return jsonify({"message": "✅ MoodMelody backend running"})
 
+@app.route("/uploads/<path:filename>")
+def serve_uploaded_file(filename):
+    return send_from_directory('.', filename, as_attachment=False)
+
+@app.route("/status", methods=["GET"])
+def get_status():
+    return jsonify({
+        "status": processing_status,
+        "result": {
+            "detected_objects": final_result.get("detected_objects", []),
+            "dominant_emotion": final_result.get("dominant_emotion", "neutral"),
+            "recommended_song": final_result.get("recommended_song", {"track_name":"Unknown","artist":"Unknown","url":"#"}),
+            "generated_story": final_result.get("generated_story", "")
+        }
+    })
+
 @app.route("/upload", methods=["POST"])
 def handle_video():
     global processing_status, final_result
-
-    if "video" not in request.files:
+    file = request.files.get("video")
+    if not file:
         return jsonify({"error": "No video uploaded"}), 400
 
-    file = request.files["video"]
-    filename = "uploaded.mp4"
+    filename = f"uploaded_{int(time.time())}.mp4"
     file.save(filename)
+    video_url = f"/uploads/{filename}"
 
+    # Reset statuses
     for k in processing_status:
         processing_status[k] = "pending"
     final_result.clear()
@@ -237,15 +241,21 @@ def handle_video():
                 "recommended_song": song,
                 "generated_story": story
             })
+            print("✅ Processing completed")
+
         except Exception as e:
-            final_result["error"] = str(e)
+            print("Processing thread error:", e)
+            for k, v in processing_status.items():
+                if v != "completed":
+                    processing_status[k] = "failed"
+            final_result.update({"error": str(e)})
 
     threading.Thread(target=process_video, daemon=True).start()
-    return jsonify({"message": "Video accepted"})
+    return jsonify({"message": "Video accepted", "video_url": video_url})
 
 # ==========================================
-# MAIN
+# Main
 # ==========================================
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
+    port = int(os.environ.get("PORT", 10000))  # Use Render's port
     app.run(host="0.0.0.0", port=port)
