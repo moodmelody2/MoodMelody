@@ -141,18 +141,16 @@ function Upload() {
             </Link>
           </li>
           <li className="page-item next-link">
-  <Link to="/keyword" className="page-link">
-    <img
-      src={`${process.env.PUBLIC_URL}/fyp-images/next.png`}
-      width="40"
-      height="45"
-      alt="Next"
-      className="next"
-    />
-  </Link>
-</li>
-
-
+            <Link to="/keyword" className="page-link">
+              <img
+                src={`${process.env.PUBLIC_URL}/fyp-images/next.png`}
+                width="40"
+                height="45"
+                alt="Next"
+                className="next"
+              />
+            </Link>
+          </li>
         </ul>
       </nav>
     </div>
