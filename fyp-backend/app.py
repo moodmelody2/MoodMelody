@@ -20,6 +20,7 @@ load_dotenv()
 # Flask App Setup
 # ------------------------------------------
 app = Flask(__name__, static_folder=".")
+UPLOAD_FOLDER = "uploads"
 app.config['MAX_CONTENT_LENGTH'] = 150 * 1024 * 1024  # 150MB max
 CORS(app, resources={r"/*": {"origins": "*"}})  # You can restrict to your frontend URL
 
@@ -184,9 +185,9 @@ def generate_long_story(objects, emotion, keyword=None, max_words=130):
 def index():
     return jsonify({"message": "✅ MoodMelody backend running"})
 
-@app.route("/uploads/<path:filename>")
-def serve_uploaded_file(filename):
-    return send_from_directory('.', filename, as_attachment=False)
+@app.route('/uploads/<filename>')
+def uploaded_file(filename):
+    return send_from_directory(UPLOAD_FOLDER, filename)
 
 @app.route("/status", methods=["GET"])
 def get_status():
