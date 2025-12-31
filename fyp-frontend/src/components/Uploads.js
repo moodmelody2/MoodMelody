@@ -1,12 +1,14 @@
 import "./uploads.css";
 import "./main.css";
 import { Link, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 function Upload() {
   const [selectedFile, setSelectedFile] = useState(null);
   const navigate = useNavigate();
+
+  const BACKEND_URL = "https://moodmelody2-backend.onrender.com"; // Live backend
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
@@ -16,17 +18,17 @@ function Upload() {
     if (!selectedFile) {
       return Swal.fire({
         toast: true,
-        position: 'top',
-        icon: 'warning',
-        title: 'No File Selected',
-        text: 'Please select a video first!',
+        position: "top",
+        icon: "warning",
+        title: "No File Selected",
+        text: "Please select a video first!",
         showConfirmButton: true,
-        confirmButtonColor: '#3b8e75ff',
-        width: '300px',
-        padding: '0.8rem',
-        background: '#ffffffff',
+        confirmButtonColor: "#3b8e75ff",
+        width: "300px",
+        padding: "0.8rem",
+        background: "#ffffffff",
         timer: 3000,
-        timerProgressBar: true
+        timerProgressBar: true,
       });
     }
 
@@ -34,50 +36,43 @@ function Upload() {
     formData.append("video", selectedFile);
 
     try {
-      const res = await fetch("https://moodmelody2-backend.onrender.com/upload", {
+      const res = await fetch(`${BACKEND_URL}/upload`, {
         method: "POST",
         body: formData,
       });
 
       if (!res.ok) throw new Error(await res.text());
-
       const data = await res.json();
 
-      if (data.video_url) {
-        localStorage.setItem("uploaded_video_url", data.video_url);
-      } else {
-        localStorage.setItem("uploaded_video_url", URL.createObjectURL(selectedFile));
-      }
+      // ✅ Old logic: store backend URL if returned, else blob URL
+      const videoURL = data.video_url || URL.createObjectURL(selectedFile);
+      localStorage.setItem("uploaded_video_url", videoURL);
 
-      // Show success popup first
       Swal.fire({
         toast: true,
-        position: 'top',
-        icon: 'success',
-        title: 'Upload Started!',
-        text: 'Your video upload has started successfully. 🎬',
+        position: "top",
+        icon: "success",
+        title: "Upload Started!",
+        text: "Your video upload has started successfully. 🎬",
         showConfirmButton: true,
-        confirmButtonColor: '#3b8e75ff',
-        width: '300px',
-        padding: '0.8rem',
-        background: '#ffffffff'
-      }).then(() => {
-        // Navigate to next page after popup is closed
-        navigate("/keyword");
-      });
+        confirmButtonColor: "#3b8e75ff",
+        width: "300px",
+        padding: "0.8rem",
+        background: "#ffffffff",
+      }).then(() => navigate("/keyword"));
     } catch (err) {
-      console.error(err);
+      console.error("Upload error:", err);
       Swal.fire({
         toast: true,
-        position: 'top',
-        icon: 'error',
-        title: 'Upload Failed',
+        position: "top",
+        icon: "error",
+        title: "Upload Failed",
         text: err.message,
         showConfirmButton: true,
-        confirmButtonColor: '#d33',
-        width: '300px',
-        padding: '0.8rem',
-        background: '#ffffffff'
+        confirmButtonColor: "#d33",
+        width: "300px",
+        padding: "0.8rem",
+        background: "#ffffffff",
       });
     }
   };
@@ -146,7 +141,7 @@ function Upload() {
             </Link>
           </li>
           <li className="page-item next-link">
-            <Link to="/result" className="page-link">
+            <Link to="/processing" className="page-link">
               <img
                 src={`${process.env.PUBLIC_URL}/fyp-images/next.png`}
                 width="40"
