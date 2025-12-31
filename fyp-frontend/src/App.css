@@ -100,7 +100,7 @@
 }
 
 .nav-links .nav-link.active::after {
-  width: 20%;
+  width: fit-content;
   height: 3px;
   background-color: black;
   border-radius: 2px;
