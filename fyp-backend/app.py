@@ -232,7 +232,7 @@ def upload_video():
         filepath = os.path.join(UPLOAD_FOLDER, filename)
         file.save(filepath)
 
-        video_url = f"/uploads/{filename}"
+        video_url = request.host_url.rstrip("/") + f"/uploads/{filename}"
 
         for k in processing_status:
             processing_status[k] = "pending"
